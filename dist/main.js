@@ -26,7 +26,6 @@ var quotes = [
     "What's your day job?"
 ];
 
-
 function ran(n) {
     return Math.floor(Math.random() * n);
 }
@@ -35,6 +34,7 @@ function pickQuote(i) {
     return quotes[i];
 }
 
+// Shamelessly copied-pasta'd from Stack Overflow.  More due to time constrain
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -50,13 +50,20 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
 function generateBoard() {
+    var r = document.getElementById('root');
+    // Clear the page and add the class to make everything appear
+    r.classList.remove('disapear');
+    r.classList.add('appear');
+    r.innerHTML = '<div id="board"></div>';
+
+
     var board = document.getElementById('board');
     var len = quotes.length;
+
 
     // Shuffle the array
     shuffle(quotes);
@@ -67,14 +74,18 @@ function generateBoard() {
         }
         board.innerHTML += '<label class="item"><input type="checkbox"><div>' + pickQuote(i); + '</div></label>';
     }
+
+    r.innerHTML += '<button id="btn_clear">Clear Board?</button>';
+    document.getElementById('btn_clear').addEventListener('click' || 'touchend', () => {
+        generateBoard();
+    })
 }
 
-var refresh = document.getElementById('refresh');
-refresh.onclick = function() {
-    location.reload();
-}
-
-generateBoard();
-
-var em = document.getElementsByTagName('code')[0];
-em.innerHTML += '<a href="mailto:zeechapman@gmail.com">zeechapman@gmail.com</a>';
+// Most of the app stuff happens here
+var btn = document.getElementById('btn');
+btn.addEventListener('click' || 'touchend', () =>  {
+    document.getElementById('root').classList.add('disapear');
+    setTimeout(() => {
+        generateBoard();
+    }, 500);
+})
