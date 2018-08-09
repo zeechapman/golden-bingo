@@ -1,4 +1,4 @@
-html, body, div, p, h1, img {
+html, body, div, p, h1, h3, label, img {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -8,29 +8,79 @@ body {
     background: #111;
     color: gold;
     font-family: sans-serif;
+    font-size: 100%;
+}
+
+.head {
+    width: 600px;
+    height: 140px;
+    background: url('golden-banner.jpg');
+    background-size: cover;
+    margin-bottom: 1rem;
+}
+
+.body {
+    padding: 0 1rem;
+}
+
+.container {
+    transition: all 0.5s linear;
+}
+
+.appear {
+    opacity: 1;
+}
+
+.disapear {
+    opacity: 0;
 }
 
 #root {
     display: flex;
     justify-content: center;
+    align-content: center;
     align-items: center;
     flex-flow: column;
+    text-align: center;
+    height: 100vh;
 }
 
 #board {
     display: grid;
+    height: 90vh;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     border: 1px solid gold;
 }
 
+button {
+    margin: 1rem 0;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-shadow: 0 1px 2px #000;
+    padding: 10px;
+    background: #f4f18d;
+    background: -moz-linear-gradient(top, #f4f18d 1%, #aa9822 45%, #aa9822 55%, #f4f18d 100%);
+    background: -webkit-linear-gradient(top, #f4f18d 1%,#aa9822 45%,#aa9822 55%,#f4f18d 100%);
+    background: linear-gradient(to bottom, #f4f18d 1%,#aa9822 45%,#aa9822 55%,#f4f18d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f18d', endColorstr='#f4f18d',GradientType=0 );
+}
+
+button:hover {
+    background: #f4f18d;
+    background: -moz-linear-gradient(top, #f4f18d 1%, #aa9822 30%, #aa9822 70%, #f4f18d 100%);
+    background: -webkit-linear-gradient(top, #f4f18d 1%,#aa9822 30%,#aa9822 70%,#f4f18d 100%);
+    background: linear-gradient(to bottom, #f4f18d 1%,#aa9822 30%,#aa9822 70%,#f4f18d 100%);
+}
+
 .item {
+    font-size: 0.5rem;
+    width: 15vw;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 10rem;
-    height: 10rem;
     border: 1px solid gold;
     border-collapse: separate;
 }
@@ -71,4 +121,14 @@ footer {
 
 code a {
     color: white;
+}
+
+@media screen and (max-width: 640px) {
+    .head {
+        width: 320px;
+        height: 75px;
+    }
+    .item {
+        width: 17.5vw;
+    }
 }
