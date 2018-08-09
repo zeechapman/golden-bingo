@@ -87,5 +87,5 @@ btn.addEventListener('click' || 'touchend', () =>  {
     document.getElementById('root').classList.add('disapear');
     setTimeout(() => {
         generateBoard();
-    }, 700);
+    }, 1000);
 })
